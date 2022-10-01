@@ -1,10 +1,10 @@
 import pyodbc
 import pandas as pd
 
-# establish connection
+# establish connections
 connection = pyodbc.connect('Driver={SQL Server};'
                       'Server=PANDA;'
-                      'Database=coba_etl_python;'
+                      'Database=etl_data;'
                       'Trusted_Connection=yes;')
 
 cursor = connection.cursor()
@@ -17,6 +17,7 @@ artists_df = pd.DataFrame(artists)
 genres = pd.read_csv('../chinook/Genre.csv')
 genres_df = pd.DataFrame(genres)
 
+#print the datafrmes
 print(albums_df)
 print(artists_df)
 print(genres_df)
@@ -35,7 +36,6 @@ def make_albums():{
 
 # create table artists
 def make_artists():{
-    
     cursor.execute('''
     DROP TABLE IF EXISTS artists;
     CREATE TABLE artists (
@@ -57,6 +57,7 @@ def make_genres():{
     ''')
 }
 
+# execute the function
 make_albums()
 make_artists()
 make_genres()
