@@ -1,7 +1,7 @@
 import pyodbc
 import pandas as pd
 
-# establish connection
+# establish connections
 connection = pyodbc.connect('Driver={SQL Server};'
                       'Server=PANDA;'
                       'Database=etl_data;'
